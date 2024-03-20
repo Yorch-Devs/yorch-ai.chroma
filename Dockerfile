@@ -30,12 +30,12 @@ RUN apt-get update --fix-missing && apt-get install -y curl && \
     rm -rf /var/lib/apt/lists/*
 
 ENV CHROMA_HOST_ADDR "0.0.0.0"
-ENV CHROMA_HOST_PORT 8000
+ENV CHROMA_HOST_PORT 8080
 ENV CHROMA_WORKERS 1
 ENV CHROMA_LOG_CONFIG "chromadb/log_config.yml"
 ENV CHROMA_TIMEOUT_KEEP_ALIVE 30
 
-EXPOSE 8000
+EXPOSE 8080
 
 ENTRYPOINT ["/docker_entrypoint.sh"]
 CMD [ "--workers ${CHROMA_WORKERS} --host ${CHROMA_HOST_ADDR} --port ${CHROMA_HOST_PORT} --proxy-headers --log-config ${CHROMA_LOG_CONFIG} --timeout-keep-alive ${CHROMA_TIMEOUT_KEEP_ALIVE}"]
